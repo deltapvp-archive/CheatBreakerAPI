@@ -1,0 +1,21 @@
+name: CheatBreakerAPI
+version: LATEST
+description: CheatBreaker 2017 API plugin
+author: CheatBreaker 2017 Development Team
+website: https://oldcheatbreaker.com
+main: com.cheatbreaker.api.CheatBreakerAPI
+load: STARTUP
+
+commands:
+
+  isrunningcheatbreaker:
+    description: Check if a player is running 2017 CheatBreaker.
+    aliases:
+      - "cb"
+      - "cheatbreaker"
+
+  ischeatbreakerbanned:
+    description: "Check if a player is 2017 CheatBreaker banned."
+    aliases:
+      - "cbbanned"
+      - "cheatbreakerbanned"
