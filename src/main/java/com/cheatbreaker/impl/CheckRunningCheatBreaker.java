@@ -24,6 +24,7 @@ public class CheckRunningCheatBreaker implements CommandExecutor {
 
             if (target == null) {
                 sender.sendMessage(ChatColor.RED + "That player is not online.");
+                return true;
             }
 
             if (!CheatBreakerAPI.getInstance().isRunningCheatBreaker(target)) {

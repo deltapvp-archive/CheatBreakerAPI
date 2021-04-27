@@ -1,7 +1,7 @@
 name: CheatBreakerAPI
 version: LATEST
-description: CheatBreaker 2017 API plugin
-author: CheatBreaker 2017 Development Team
+description: CheatBreaker 2017 API Plugin
+author: CheatBreaker/CheatBreaker 2017 Development Team
 website: https://oldcheatbreaker.com
 main: com.cheatbreaker.api.CheatBreakerAPI
 load: STARTUP

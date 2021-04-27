@@ -18,6 +18,7 @@ import com.google.common.collect.ImmutableSet;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -186,16 +187,29 @@ public final class CheatBreakerAPI extends JavaPlugin implements Listener {
     }
 
     public boolean isCheatBreakerBanned(Player target) throws IOException {
-            URL link = new URL("https://raw.githubusercontent.com/CheatBreaker2017/Website/master/cheating_bans_temp.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(link.openStream()));
 
-            String listLine;
-            boolean result = false;
-            while ((listLine = reader.lines().collect(Collectors.joining())) != null)
-                result = listLine.contains(target.getDisplayName());
+        URL link = new URL("https://raw.githubusercontent.com/CheatBreaker2017/Website/master/cheating_bans_temp.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(link.openStream()));
+
+        String line;
+        boolean isBanned = false;
+
+        if (target == null) {
+
+            OfflinePlayer offlinetarget = Bukkit.getServer().getOfflinePlayer(target.getName());
+            while ((line = reader.lines().collect(Collectors.joining())) != null)
+                return line.contains(offlinetarget.getUniqueId().toString().replace("-", ""));
             reader.close();
 
-        return result;
+        } else {
+
+            while ((line = reader.lines().collect(Collectors.joining())) != null)
+                return line.contains(target.getUniqueId().toString().replace("-", ""));
+            reader.close();
+
+        }
+
+        return isBanned;
     }
 
     public void sendNotification(Player player, CBNotification notification) {
